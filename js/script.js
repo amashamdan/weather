@@ -20,7 +20,6 @@ function getWeather(lat, lng){
 	url : "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lng+"&appid=3b226624aed979fa47deafd7a85e8a1d",
     /** If the request succeeds, the results JSON is parsed. */
     success : function(parsed_json) {
-    	console.log(parsed_json);
 	    var location = parsed_json.name;
 	    var temp = Math.round(parsed_json.main.temp - 273);
 	    var humidity = Math.round(parsed_json.main.humidity);
@@ -32,9 +31,7 @@ function getWeather(lat, lng){
 
 	    var icon = parsed_json.weather[0].icon;
 	    /** The weather icon is selected based on the icon code retrieved in the previous line. */
-	    /*var iconUrl = "weather_images/"+icon+".png";
-	    /** The information are pushed to the weatherArray which is used to display
-	    weather information on the map using Knockout bindings. */
+	    var iconUrl = "weather_images/"+icon+".png";
 
 	    /* The current time is stored in time variables, to display time
 	    in customized format, the hours, minutes and seconds are stored in their
@@ -46,7 +43,7 @@ function getWeather(lat, lng){
 
 	    /* All weather data are now appended to the weather div */
 		$(".weather").append("<p>Your cuurent location " + location + "</p>");
-		$(".weather").append("<p>" + temp + "</p>");
+		$(".weather").append("<p>" + temp + " <img src=" + iconUrl + "></p>");
 		$(".weather").append("<p>humidity " + humidity + "</p>");
 		$(".weather").append("<p>condition " + condition + "</p>");
 		$(".weather").append("<p>wind " + wind + "</p>");
