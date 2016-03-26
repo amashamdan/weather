@@ -1,16 +1,19 @@
-/* The if statement checks if the browser supports geolocation.
-If it does the location is retrieved. If not, an error message is displayed. */
-if (navigator.geolocation){
-	navigator.geolocation.getCurrentPosition(function(position){
-		/* The latitude and longitude of the retreived position are stored
-		in the variables latitude and longitude. */
-		var latitude = position.coords.latitude;
-		var longitude = position.coords.longitude;
-		/* getWeather function is called to get weather information. */
-		getWeather(latitude, longitude);
-	});
-} else {
-	alert("Location services are not available in your browser.")
+/* Location lookup using maxmind gelolocation API.
+The function below is found in geoip2.js which is loaded in the head of the html */
+geoip2.city(onSuccess, onError);
+
+/* If the call to geooip2 is successfull, the following function executes. */
+function onSuccess(location){
+	/* The lookedup longitude and latitude are atored in their respective variables. */
+	var latitude = location.location.latitude;
+	var longitude = location.location.longitude;
+	/* the getWeather function is called with current location as arguments */ 
+	getWeather(latitude, longitude);
+}
+
+/* If the call to geoip2 is unsuccessfull, an error message is alerted. */
+function onError(error){
+	alert("Error retreiving weather inforamtion: " + error);
 }
 
 /* The function getWeather requests weather inforamtion using openweather API
