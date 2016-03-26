@@ -64,7 +64,8 @@ function getWeather(lat, lng){
 		} else if (hours == 12){
 			$(".weather").append("<p>Last updated " + hours + ":" + min + " PM</p>");			
 		}
-
+		/* The loading data message is hidden upon fully loading the page */
+		$(".loading").css("display", "none");
 	}
 	});
 

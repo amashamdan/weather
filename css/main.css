@@ -2,6 +2,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	color: white;
 	background-color: #AE3C3C;
+	margin: 0;
 }
 
 .container {
@@ -94,6 +95,17 @@ a {
 	height: 20px;
 	border-radius: 5px;
 	color: white;
+}
+
+.loading {
+	background-color: black;
+	opacity: 0.85;
+	text-align: center;
+	padding-top: 100px;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	margin: 0;
 }
 
 @media screen and (max-width: 500px) {
