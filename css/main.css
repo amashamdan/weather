@@ -1,0 +1,102 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	background-color: #AE3C3C;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 15px;
+	width: 100%;
+	max-width: 600px;
+}
+
+.header, .weather {
+	text-align: center;
+}
+
+.title {
+	margin: 0;
+}
+
+.fcc {
+	text-align: right;
+	margin: 0;
+}
+
+.location {
+	font-size: 1.1em;
+}
+
+.other {
+	margin: 2px;
+}
+
+.current {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.temperature {
+	font-size: 3em;
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.image {
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.footer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.author {
+	width: 50%;
+	font-size: 0.8em;
+	color: white;
+}
+
+.author p,
+.credits p {
+	margin: 2px;	
+}
+
+.credits {
+	width: 50%;
+	text-align: right;
+	font-size: 0.8em;
+	color: white;
+}
+
+ul {
+	margin: 0;
+}
+
+a {
+	color: #68BCFF;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+	.author {
+		width: 100%;
+	}
+	.credits {
+		width: 100%;
+		text-align: left;
+	}
+	.image {
+		width: 100%;
+		justify-content: center;
+	}
+	.temperature {
+		width: 100%;
+		justify-content: center;
+	}
+}

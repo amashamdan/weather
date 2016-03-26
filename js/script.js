@@ -42,12 +42,15 @@ function getWeather(lat, lng){
 	    var seconds = time.getSeconds();
 
 	    /* All weather data are now appended to the weather div */
-		$(".weather").append("<p>Your cuurent location " + location + "</p>");
-		$(".weather").append("<p>" + temp + " <img src=" + iconUrl + "></p>");
-		$(".weather").append("<p>humidity " + humidity + "</p>");
-		$(".weather").append("<p>condition " + condition + "</p>");
-		$(".weather").append("<p>wind " + wind + "</p>");
-		$(".weather").append("<p>clouds " + clouds + "</p>");
+		$(".weather").append("<p class='location'>Your are cuurently in <strong>" +
+			location + "</strong></p>");
+		$(".weather").append("<div class='current'><div class='temperature'>" + temp +
+			"&deg  </div><div class='image'><img class='-weather-image' src=" 
+			+ iconUrl + "></div></div>");
+		$(".weather").append("<p class='other'>Condition: " + condition + "</p>");
+		$(".weather").append("<p class='other'>Humidity: " + humidity + "%</p>");
+		$(".weather").append("<p class='other'>Wind speed: " + wind + " m/s</p>");
+		$(".weather").append("<p class='other'>Clouds: " + clouds + "%</p>");
 
 		/* The if statement is use to display the time in 12-hours format with
 		am or pm displayed. */
