@@ -1,20 +1,17 @@
-/* Location lookup using maxmind gelolocation API.
-The function below is found in geoip2.js which is loaded in the head of the html */
-geoip2.city(onSuccess, onError);
-
-/* If the call to geooip2 is successfull, the following function executes. */
-function onSuccess(location){
-	/* The lookedup longitude and latitude are atored in their respective variables. */
-	var latitude = location.location.latitude;
-	var longitude = location.location.longitude;
-	/* the getWeather function is called with current location as arguments */ 
+/* Location lookup using ipinfo api */
+$.getJSON('http://ipinfo.io', function(data){
+	/* The location is stored in the variable location. */
+	var location = data.loc;
+	/* latitude and longitude are stored in location as a single string seperated
+	by a comma. The split function is called on location to seperate latitude and
+	longitude. */
+	location = location.split(",");
+	/* The longitude and latitude are stored in their respective variables. */
+	var latitude = location[0];
+	var longitude = location[1];
+	/* The getWeather function is called with latitude and longitude as arguments. */
 	getWeather(latitude, longitude);
-}
-
-/* If the call to geoip2 is unsuccessfull, an error message is alerted. */
-function onError(error){
-	alert("Error retreiving location inforamtion: " + error);
-}
+})
 
 /* The function getWeather requests weather inforamtion using openweather API
 and displays the information on the page. */
