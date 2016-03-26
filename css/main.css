@@ -83,6 +83,19 @@ a {
 	text-decoration: none;
 }
 
+.button-div {
+	text-align: right;
+}
+
+.unit-button {
+	margin: 15px 0 0 0;
+	background-color: #339933;
+	border: none;
+	height: 20px;
+	border-radius: 5px;
+	color: white;
+}
+
 @media screen and (max-width: 500px) {
 	.author {
 		width: 100%;

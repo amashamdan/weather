@@ -16,12 +16,14 @@ $.getJSON('http://ipinfo.io', function(data){
 /* The function getWeather requests weather inforamtion using openweather API
 and displays the information on the page. */
 function getWeather(lat, lng){
+	var temp;
+	var iconUrl;
 	$.ajax({
 	url : "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lng+"&appid=3b226624aed979fa47deafd7a85e8a1d",
     /** If the request succeeds, the results JSON is parsed. */
     success : function(parsed_json) {
 	    var location = parsed_json.name;
-	    var temp = Math.round(parsed_json.main.temp - 273);
+	    temp = Math.round(parsed_json.main.temp - 273);
 	    var humidity = Math.round(parsed_json.main.humidity);
 	    var condition = parsed_json.weather[0].description;
 	    var clouds = parsed_json.clouds.all;
@@ -31,7 +33,7 @@ function getWeather(lat, lng){
 
 	    var icon = parsed_json.weather[0].icon;
 	    /** The weather icon is selected based on the icon code retrieved in the previous line. */
-	    var iconUrl = "weather_images/"+icon+".png";
+	    iconUrl = "weather_images/"+icon+".png";
 
 	    /* The current time is stored in time variables, to display time
 	    in customized format, the hours, minutes and seconds are stored in their
@@ -45,7 +47,7 @@ function getWeather(lat, lng){
 		$(".weather").append("<p class='location'>Your are cuurently in <strong>" +
 			location + "</strong></p>");
 		$(".weather").append("<div class='current'><div class='temperature'>" + temp +
-			"&deg  </div><div class='image'><img class='-weather-image' src=" 
+			"&degC  </div><div class='image'><img class='-weather-image' src=" 
 			+ iconUrl + "></div></div>");
 		$(".weather").append("<p class='other'>Condition: " + condition + "</p>");
 		$(".weather").append("<p class='other'>Humidity: " + humidity + "%</p>");
@@ -64,5 +66,26 @@ function getWeather(lat, lng){
 		}
 
 	}
-});
+	});
+
+	var unit = "c";
+
+	/* A function to change the unit from celcius to fahrenheit and vice versa
+	when the "Change Unit" is clicked. */
+	$(".unit-button").click(function(){
+		/* The if statement checks for the current unit and changed it accordingly,
+		then the html is modified to display the new temperature. */
+		if (unit == "c"){
+			var tempF = Math.floor(temp * 9 / 5 +32);
+			unit = "f";
+			$(".current").html("<div class='temperature'>" + tempF +
+				"&degF  </div><div class='image'><img class='-weather-image' src=" 
+				+ iconUrl + "></div>");
+		} else if (unit == "f"){
+			unit = "c";
+			$(".current").html("<div class='temperature'>" + temp +
+				"&degC  </div><div class='image'><img class='-weather-image' src=" 
+				+ iconUrl + "></div>");
+		}
+	});
 }
