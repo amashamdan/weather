@@ -13,7 +13,7 @@ function onSuccess(location){
 
 /* If the call to geoip2 is unsuccessfull, an error message is alerted. */
 function onError(error){
-	alert("Error retreiving weather inforamtion: " + error);
+	alert("Error retreiving location inforamtion: " + error);
 }
 
 /* The function getWeather requests weather inforamtion using openweather API
