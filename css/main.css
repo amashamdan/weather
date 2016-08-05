@@ -8,7 +8,6 @@ body {
 .container {
 	margin: 0 auto;
 	padding: 15px;
-	width: 100%;
 	max-width: 600px;
 }
 
@@ -59,7 +58,7 @@ body {
 
 .author {
 	width: 50%;
-	font-size: 0.8em;
+	font-size: 0.7em;
 	color: white;
 }
 
